@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 // uncomment if you want to use Spring Security XML Configuration
- @ImportResource("classpath:spring-security-config.xml")
+@ImportResource("classpath:spring-security-config.xml")
 public class Run {
 
     @Autowired

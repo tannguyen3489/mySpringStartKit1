@@ -10,10 +10,17 @@
                                  http://www.springframework.org/schema/context
                                  http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <http create-session="stateless">
+    <http>
+        <intercept-url pattern="/" access="permitAll()"/>
+        <intercept-url pattern="/favicon.ico" access="permitAll()"/>
+        <intercept-url pattern="/login" access="permitAll()"/>
+
         <intercept-url pattern="/**" access="isAuthenticated()"/>
-        <http-basic/>
+        <form-login login-page='/login' default-target-url='/home'
+                    always-use-default-target='false' />
+        <logout logout-url="/logout" logout-success-url="/" invalidate-session="true" />
     </http>
+
 
     <mvc:component-scan base-package="com.memorynotfound"/>
 

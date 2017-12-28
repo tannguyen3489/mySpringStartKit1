@@ -1,7 +1,9 @@
 com/memorynotfound/spring/security/web/UserController.class
 com/memorynotfound/spring/security/Run.class
 com/memorynotfound/spring/security/repository/UserRepository.class
-com/memorynotfound/spring/security/config/SecurityConfig.class
 com/memorynotfound/spring/security/model/User.class
+com/memorynotfound/spring/security/web/CommonController.class
+com/memorynotfound/spring/security/web/rest/users/UserRestController.class
 com/memorynotfound/spring/security/service/UserService.class
+com/memorynotfound/spring/security/config/SwaggerConfig.class
 com/memorynotfound/spring/security/model/Role.class
