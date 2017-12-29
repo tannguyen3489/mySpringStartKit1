@@ -3,6 +3,7 @@ package com.memorynotfound.spring.security;
 import com.memorynotfound.spring.security.model.Role;
 import com.memorynotfound.spring.security.model.User;
 import com.memorynotfound.spring.security.repository.UserRepository;
+import com.memorynotfound.spring.security.service.MyBCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 // uncomment if you want to use Spring Security XML Configuration
-@ImportResource("classpath:spring-security-config.xml")
+//@ImportResource("classpath:spring-security-config.xml")
 public class Run {
 
     @Autowired

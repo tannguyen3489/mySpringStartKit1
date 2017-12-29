@@ -10,10 +10,11 @@
                                  http://www.springframework.org/schema/context
                                  http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <http>
+    <http pattern="/*">
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/favicon.ico" access="permitAll()"/>
         <intercept-url pattern="/login" access="permitAll()"/>
+        <intercept-url pattern="/loginForm" access="permitAll()"/>
 
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <logout logout-url="/logout" logout-success-url="/" invalidate-session="true" />

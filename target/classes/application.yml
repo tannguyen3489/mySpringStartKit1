@@ -30,3 +30,20 @@ logging:
     com.memorynotfound: DEBUG
     org.springframework.web: INFO
     org.springframework.security: INFO
+
+security.basic.enabled: false
+
+#server.port: 8090
+pac4j:
+    logout:
+        defaultUrl: /?defaulturlafterlogout
+        destroySession: false
+
+    callback:
+        multiProfile: false
+
+    centralLogout:
+        defaultUrl: http://localhost:8090/?defaulturlafterlogoutafteridp
+        logoutUrlPattern: http://localhost:8090/.*
+
+salt: 12345678901234567890123456789012
