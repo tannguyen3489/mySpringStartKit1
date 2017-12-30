@@ -28,6 +28,7 @@ public class Run {
     public void init(){
         User user = new User(
                 "Memory",
+                "Memory",
                 "Not Found",
                 "info@memorynotfound.com",
                 passwordEncoder.encode("password"),

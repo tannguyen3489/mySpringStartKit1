@@ -30,7 +30,7 @@ public class WebPac4jConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new SecurityInterceptor(config, "FacebookClient", "custom")).addPathPatterns("/facebookcustom/*");
         registry.addInterceptor(new SecurityInterceptor(config, "TwitterClient,FacebookClient")).addPathPatterns("/twitter/*");
         registry.addInterceptor(new SecurityInterceptor(config, "FormClient")).addPathPatterns("/form/*");
-        registry.addInterceptor(new SecurityInterceptor(config, "FormClient")).addPathPatterns("/api-rest/*");
+        registry.addInterceptor(new SecurityInterceptor(config, "FormClient")).addPathPatterns("/api-rest/**");
         registry.addInterceptor(new SecurityInterceptor(config, "IndirectBasicAuthClient")).addPathPatterns("/basicauth/*");
         registry.addInterceptor(new SecurityInterceptor(config, "CasClient")).addPathPatterns("/cas/*");
         registry.addInterceptor(new SecurityInterceptor(config, "SAML2Client")).addPathPatterns("/saml/*");
@@ -38,7 +38,7 @@ public class WebPac4jConfig extends WebMvcConfigurerAdapter {
 
         registry.addInterceptor(new SecurityInterceptor(config, "AnonymousClient")).addPathPatterns("/home");
 
-        registry.addInterceptor(new SecurityInterceptor(config)).addPathPatterns("/app-rest/*");
+        registry.addInterceptor(new SecurityInterceptor(config)).addPathPatterns("/api-rest/**");
         registry.addInterceptor(new SecurityInterceptor(config, "DirectBasicAuthClient,ParameterClient")).addPathPatterns("/dba/*");
         registry.addInterceptor(new SecurityInterceptor(config, "ParameterClient")).addPathPatterns("/rest-jwt/*");
 

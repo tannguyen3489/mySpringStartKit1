@@ -1,6 +1,7 @@
 package com.memorynotfound.spring.security.config;
 
 
+import com.memorynotfound.spring.security.service.auth.UsernamePasswordAuthenticator;
 import com.nimbusds.jose.JWSAlgorithm;
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.cas.config.CasConfiguration;
@@ -22,6 +23,7 @@ import org.pac4j.oidc.client.GoogleOidcClient;
 import org.pac4j.oidc.config.OidcConfiguration;
 import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +37,9 @@ public class Pac4jConfig {
 
     @Value("${salt}")
     private String salt;
+
+    @Autowired
+    private UsernamePasswordAuthenticator usernamePasswordAuthenticator;
 
     @Bean
     public Config config() {
@@ -71,8 +76,8 @@ public class Pac4jConfig {
         final TwitterClient twitterClient = new TwitterClient("CoxUiYwQOSFDReZYdjigBA",
                 "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
         // HTTP
-        final FormClient formClient = new FormClient("http://localhost:8080/loginForm.jsp", new SimpleTestUsernamePasswordAuthenticator());
-        final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
+        final FormClient formClient = new FormClient("http://localhost:8080/loginForm", usernamePasswordAuthenticator);
+        final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(usernamePasswordAuthenticator);
 
         // CAS
         final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
@@ -90,7 +95,7 @@ public class Pac4jConfig {
         parameterClient.setSupportPostRequest(false);
 
         // basic auth
-        final DirectBasicAuthClient directBasicAuthClient = new DirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
+        final DirectBasicAuthClient directBasicAuthClient = new DirectBasicAuthClient(usernamePasswordAuthenticator);
         final AnonymousClient anonymousClient = new AnonymousClient();
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,

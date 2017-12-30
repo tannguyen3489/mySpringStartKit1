@@ -25,4 +25,9 @@ public class UserRestController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/findByLastName")
+    public List<User> findByLastName(){
+        return userRepository.findByLastName("Not Found");
+    }
+
 }

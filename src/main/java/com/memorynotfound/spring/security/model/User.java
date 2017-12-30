@@ -13,6 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
     private String firstName;
     private String lastName;
     private String email;
@@ -31,7 +32,8 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String name, String firstName, String lastName, String email, String password, Collection<Role> roles) {
+        this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
